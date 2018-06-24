@@ -1,0 +1,116 @@
+﻿{
+  "output_file": "settings.json",
+    "OnlyLive": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Only when live",
+    "tooltip": "Command is only active when stream is live",
+  	"group": "General"
+  },
+    "Command": {
+    "type": "textbox",
+    "value": "!steal",
+  	"label": "Command Name",
+    "tooltip": "The command the bot will respond to",
+  	"group": "General"
+  },
+    "Permission": {
+    "type": "dropdown",
+    "value": "Everyone",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "Permission level",
+    "tooltip": "Set the permission level for the command",
+    "group": "General"
+  },
+    "PermissionInfo": {
+    "type": "textbox",
+    "value": "",
+    "label": "Permission level info",
+    "tooltip": "Set the user, rank or tier for permission",
+    "group": "General"
+  },
+    "UseCD": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Use Cooldown Messages",
+    "tooltip": "Enable/Disable cooldown messages",
+  	"group": "Cooldown"
+  },
+    "Cooldown": {
+    "type": "numberbox",
+  	"label": "Cooldown (seconds)",
+    "value": 0,
+    "tooltip": "Cooldown in seconds.",
+  	"group": "Cooldown"
+  },
+   "OnCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on cooldown for {1} seconds!",
+  	"label": "Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on cooldown. \r\n {0} = user \r\n {1} = time remaining",
+  	"group": "Cooldown"
+  },
+    "UserCooldown": {
+    "type": "numberbox",
+  	"label": "User Cooldown (seconds)",
+    "value": 10,
+    "tooltip": "User cooldown in seconds.",
+  	"group": "Cooldown"
+  },
+    "OnUserCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on user cooldown for {1} seconds!",
+  	"label": "User Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n {0} = user \r\n {1} = time remaining",
+   	"group": "Cooldown"
+  },
+    "BaseResponsewin": {
+    "type": "textbox",
+    "value": "{0} has succeeded in stealing {2} {3} from {1}.",
+    "label": "Win message",
+    "tooltip": " {0} = user \r\n {1} = target \r\n {2} = stolen amount \r\n {3} = currency name",
+    "group": "Responses"
+  },
+    "BaseResponselose": {
+    "type": "textbox",
+    "value": "{0} was caught trying to steal from {1}!! {1} agreed to settle for {2} {3} to not call one of the mods!",
+    "label": "Loss message",
+    "tooltip": " {0} = user \r\n {1} = target \r\n {2} = penalty \r\n {3} = currency name",
+    "group": "Responses"
+  },
+    "BaseResponsefail": {
+    "type": "textbox",
+    "value": "{0} has failed to steal from {1}, but {0} was never caught in the attempt!",
+    "label": "Fail message",
+    "tooltip": " {0} = user \r\n {1} = target",
+    "group": "Responses"
+  },
+    "BaseResponsetimeout": {
+    "type": "textbox",
+    "value": "{0} was caught trying to steal from {1}!! {1} refused to settle, and called one of the mods! {0} was timedout for {2} seconds! RIP!",
+    "label": "Timeout message",
+    "tooltip": " {0} = user \r\n {1} = target \r\n {2} = timeout time",
+    "group": "Responses"
+  },
+    "NotEnoughResponse": {
+    "type": "textbox",
+    "value": "{0} or {1} do not have {4} {2} to attempt stealing!",
+    "label": "Not enough currency response",
+    "tooltip": "Message sent when user doesn't have enough points! \r\n {0} = user \r\n {1} = target \r\n {2} = currency name \r\n {3} = command \r\n {4} = max steal",
+    "group": "Responses"
+  },
+    "Steal": {
+    "type": "numberbox",
+  	"label": "Maximum Steal",
+    "value": 30,
+    "tooltip": "",
+  	"group": "General"
+  },
+    "Timeout": {
+    "type": "numberbox",
+  	"label": "Timeout (seconds)",
+    "value": 60,
+    "tooltip": "Timeout in seconds.",
+  	"group": "General"
+  },
+}
