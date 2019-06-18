@@ -12,7 +12,7 @@ import random
 ScriptName = "Steal"
 Website = ""
 Creator = "Yaz12321"
-Version = "1.0"
+Version = "1.1"
 Description = "Viewers can try to steal points from others, they can succeed, fail, get caught, or go to prison (timeout)"
 
 settingsFile = os.path.join(os.path.dirname(__file__), "settings.json")
@@ -22,6 +22,8 @@ settingsFile = os.path.join(os.path.dirname(__file__), "settings.json")
 #---------------------------------------
 
 # Version:
+# > 1.1 <
+    # Bug fixed
 # > 1.0 <
     # First Release
 
@@ -165,7 +167,7 @@ def Execute(data):
                 
                 else:
                     #send not enough currency response
-                    Parent.SendTwitchMessage(MySettings.NotEnoughResponse.format(data.UserName,Parent.GetParam(1),Parent.GetCurrencyName(),MySettings.Command,MySettings.Steal))
+                    Parent.SendTwitchMessage(MySettings.NotEnoughResponse.format(data.UserName,data.GetParam(1),Parent.GetCurrencyName(),MySettings.Command,MySettings.Steal))
     return
 
 def Tick():
