@@ -136,30 +136,37 @@ def Execute(data):
             
             else: #check if user got enough points
 
+                target = data.GetParam(1)
+                target = target.replace("@","")
+
                               
-                if MySettings.Steal <= Parent.GetPoints(data.User) and MySettings.Steal <= Parent.GetPoints(data.GetParam(1)):
+                if MySettings.Steal <= Parent.GetPoints(data.User) and MySettings.Steal <= Parent.GetPoints(target):
 
                     options = ['lose','win','fail','timeout']
-                    result = random.choice(options)
-                    payout = Parent.GetRandom(0,MySettings.Steal+1)
+                    result = options[Parent.GetRandom(0,4)]
+                    payout = Parent.GetRandom(1,MySettings.Steal+1)
 
                     if result == "lose":
                         Parent.RemovePoints(data.User, data.UserName, payout)
-                        Parent.AddPoints(data.GetParam(1),data.GetParam(1),payout)
-                        Parent.SendTwitchMessage(MySettings.BaseResponselose.format(data.UserName,data.GetParam(1),payout,Parent.GetCurrencyName()))
+                        Parent.AddPoints(target,target,payout)
+                        Parent.SendTwitchMessage(MySettings.BaseResponselose.format(data.UserName,target,payout,Parent.GetCurrencyName()))
+                        
 
                     if result == "win":
                         Parent.AddPoints(data.User, data.UserName, payout)
-                        Parent.RemovePoints(data.GetParam(1),data.GetParam(1),payout)
-                        Parent.SendTwitchMessage(MySettings.BaseResponsewin.format(data.UserName,data.GetParam(1),payout,Parent.GetCurrencyName()))
+                        Parent.RemovePoints(target,target,payout)
+                        Parent.SendTwitchMessage(MySettings.BaseResponsewin.format(data.UserName,target,payout,Parent.GetCurrencyName()))
+                        
 
                     if result == "fail":
-                        Parent.SendTwitchMessage(MySettings.BaseResponsefail.format(data.UserName,data.GetParam(1)))
+                        Parent.SendTwitchMessage(MySettings.BaseResponsefail.format(data.UserName,target))
+                        
 
                     if result == "timeout":
-                        Parent.SendTwitchMessage(MySettings.BaseResponsetimeout.format(data.UserName,data.GetParam(1),MySettings.Timeout))
+                        Parent.SendTwitchMessage(MySettings.BaseResponsetimeout.format(data.UserName,target,MySettings.Timeout))
                         timeoutuser = "/timeout {} {}".format(data.User,MySettings.Timeout) 
-                        Parent.SendTwitchMessage(timeoutuser)                  
+                        Parent.SendTwitchMessage(timeoutuser)
+                        
 
                     # add cooldowns
                     Parent.AddUserCooldown(ScriptName,MySettings.Command,data.User,MySettings.UserCooldown)
@@ -167,7 +174,7 @@ def Execute(data):
                 
                 else:
                     #send not enough currency response
-                    Parent.SendTwitchMessage(MySettings.NotEnoughResponse.format(data.UserName,data.GetParam(1),Parent.GetCurrencyName(),MySettings.Command,MySettings.Steal))
+                    Parent.SendTwitchMessage(MySettings.NotEnoughResponse.format(data.UserName,target,Parent.GetCurrencyName(),MySettings.Command,MySettings.Steal))
     return
 
 def Tick():
