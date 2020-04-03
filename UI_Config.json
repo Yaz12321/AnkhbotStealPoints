@@ -106,6 +106,14 @@
     "tooltip": "",
   	"group": "General"
   },
+    "targeted": {
+    "type": "dropdown",
+    "value": "targeted",
+    "items": ["targeted","random","both"],
+    "label": "Targeted Stealing",
+    "tooltip": "Targeted means a specific name has to be after the command, Random steals from a random viewer, and Both will target a specific viewer (if name provided) or steals at random (if not)",
+    "group": "General"
+  },
     "Timeout": {
     "type": "numberbox",
   	"label": "Timeout (seconds)",

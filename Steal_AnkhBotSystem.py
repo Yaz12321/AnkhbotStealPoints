@@ -54,6 +54,7 @@ class Settings:
             self.NotEnoughResponse = "{0} or {1} do not have {4} {2} to attempt stealing!"
             self.Steal = 30
             self.Timeout = 60
+            self.targeted = "targeted"
 
             
     # Reload settings on save through UI
@@ -139,8 +140,34 @@ def Execute(data):
             
             else: #check if user got enough points
 
-                target = data.GetParam(1)
-                target = target.replace("@","")
+                if MySettings.targeted == "targeted":
+
+                    target = data.GetParam(1)
+                    target = target.replace("@","")
+
+                else:
+                    if MySettings.targeted == "random":
+
+                        viewers = Parent.GetViewerList()
+                        p = 0
+                        while p < MySettings.Steal:
+                            n = Parent.GetRandom(0,len(viewers))
+                            target = viewers[n]
+                            p = Parent.GetPoints(target)
+
+
+                    else:
+                        if data.GetParam(1)== "":
+                            viewers = Parent.GetViewerList()
+                            while p < MySettings.Steal:
+                                Parent.SendTwitchMessage("P = 0")
+                                n = Parent.GetRandom(0,len(viewers))
+                                target = viewers[n]
+                                p = Parent.GetPoints(target)
+                        else:
+                            target = data.GetParam(1)
+                            target = target.replace("@","")                            
+                    
 
                               
                 if MySettings.Steal <= Parent.GetPoints(data.User) and MySettings.Steal <= Parent.GetPoints(target):
