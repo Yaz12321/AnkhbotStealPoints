@@ -12,7 +12,7 @@ import random
 ScriptName = "Steal"
 Website = ""
 Creator = "Yaz12321"
-Version = "1.2"
+Version = "1.3"
 Description = "Viewers can try to steal points from others, they can succeed, fail, get caught, or go to prison (timeout)"
 
 settingsFile = os.path.join(os.path.dirname(__file__), "settings.json")
@@ -22,6 +22,10 @@ settingsFile = os.path.join(os.path.dirname(__file__), "settings.json")
 #---------------------------------------
 
 # Version:
+
+# > 1.3 <
+    # Added the option to steal at random
+
 # > 1.2 <
     # Bug fixed
     # Users can not @ the targeted user
