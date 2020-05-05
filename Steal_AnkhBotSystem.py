@@ -12,7 +12,7 @@ import random
 ScriptName = "Steal"
 Website = ""
 Creator = "Yaz12321"
-Version = "1.3"
+Version = "1.3.1"
 Description = "Viewers can try to steal points from others, they can succeed, fail, get caught, or go to prison (timeout)"
 
 settingsFile = os.path.join(os.path.dirname(__file__), "settings.json")
@@ -22,6 +22,9 @@ settingsFile = os.path.join(os.path.dirname(__file__), "settings.json")
 #---------------------------------------
 
 # Version:
+
+# > 1.3.1 <
+    # Fixed bug
 
 # > 1.3 <
     # Added the option to steal at random
@@ -163,6 +166,7 @@ def Execute(data):
                     else:
                         if data.GetParam(1)== "":
                             viewers = Parent.GetViewerList()
+                            p = 0
                             while p < MySettings.Steal:
                                 Parent.SendTwitchMessage("P = 0")
                                 n = Parent.GetRandom(0,len(viewers))
