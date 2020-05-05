@@ -168,7 +168,7 @@ def Execute(data):
                             viewers = Parent.GetViewerList()
                             p = 0
                             while p < MySettings.Steal:
-                                Parent.SendTwitchMessage("P = 0")
+                                #Parent.SendTwitchMessage("P = 0")
                                 n = Parent.GetRandom(0,len(viewers))
                                 target = viewers[n]
                                 p = Parent.GetPoints(target)
